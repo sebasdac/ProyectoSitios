@@ -1,0 +1,51 @@
+﻿@page
+@model ProyectoSitios.Pages.Bitacoras.IndexModel
+@{
+}
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Bitácora</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-page="/Index">Dashboard</a></li>
+        <li class="breadcrumb-item active">Bitácora</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Bitácora
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+               
+                        <th>Fecha</th>
+                        <th>Descripcion</th>
+                        <th>Usuario</th>
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+               
+                        <th>Fecha</th>
+                        <th>Descripcion</th>
+                        <th>Usuario</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model.Bitacoras)
+                    {
+                        <tr>
+                          
+                            <td>@item.Fecha</td>
+                            <td>@item.Descripcion</td>
+                            <td>@item.Nombre</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
