@@ -18,8 +18,8 @@
             <table id="datatablesSimple">
                 <thead>
                     <tr>
-               
-                        <th>Fecha</th>
+
+                        <th data-type="date" data-format="DD/MM/YYYY HH:mm:ss">Fecha</th>
                         <th>Descripción</th>
                         <th>Usuario</th>
 
@@ -28,7 +28,7 @@
                 <tfoot>
                     <tr>
                
-                        <th>Fecha</th>
+                        <th data-type="date" data-format="DD/MM/YYYY HH:mm:ss">Fecha</th>
                         <th>Descripción</th>
                         <th>Usuario</th>
                     </tr>
@@ -37,8 +37,8 @@
                     @foreach (var item in Model.Bitacoras)
                     {
                         <tr>
-                          
-                            <td>@item.Fecha</td>
+
+                            <td>@item.Fecha.ToString("dd/MM/yyyy HH:mm:ss")</td>
                             <td>@item.Descripcion</td>
                             <td>@item.Nombre</td>
                         </tr>
@@ -48,4 +48,40 @@
         </div>
     </div>
 </div>
+<script>
+    window.addEventListener('DOMContentLoaded', event => {
+        const datatablesSimple = document.getElementById('datatablesSimple');
+
+        if (datatablesSimple) {
+            const dataTable = new simpleDatatables.DataTable(datatablesSimple, {
+                perPage: 100,
+                perPageSelect: [100],
+                searchable: true,
+                fixedHeight: true,
+                order: [[0, "desc"]], 
+                columns: [
+                    {
+                        select: 0,
+                        type: "date",
+                        format: "DD/MM/YYYY HH:mm:ss"
+                    }
+                ],
+                labels: {
+                    placeholder: "Buscar...",
+                    perPage: "registros por página",
+                    noRows: "No hay registros disponibles",
+                    info: "Mostrando {start} a {end} de {rows} registros",
+                    loading: "Cargando...",
+                    infoFiltered: " (filtrado de {rowsTotal} registros totales)",
+                }
+            });
+
+          
+            setTimeout(() => {
+                dataTable.setOrder([[0, "desc"]]);
+            }, 500);
+        }
+    });
+
+</script>
 

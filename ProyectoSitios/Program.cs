@@ -11,7 +11,11 @@ builder.Services.AddSingleton<IDbConnectionFactory, DbConnectionFactory>();
 builder.Services.AddScoped<BitacoraRepository>();
 builder.Services.AddScoped<IBitacoraService, BitacoraService>();
 
+builder.Services.AddSession(); //anadir sesiones
+
 var app = builder.Build();
+
+app.UseSession(); //usar sesiones
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
