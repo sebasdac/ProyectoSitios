@@ -16,7 +16,7 @@ namespace ProyectoSitios.Pages
 
         public void OnGet()
         {
-            HttpContext.Session.SetString("UserRole", "Administrado"); // Rol quemado como Administrador
+            HttpContext.Session.SetString("UserRole", "Administrador"); // Rol quemado como Administrador
         }
     }
 }
